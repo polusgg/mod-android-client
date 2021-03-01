@@ -18,6 +18,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags ""
+                arguments "--parallel=8"
             }
         }
         ndk {

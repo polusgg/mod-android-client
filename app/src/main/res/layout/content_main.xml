@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/launch_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toTopOf="@id/launch_heading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
         android:id="@+id/launch_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/heading_launch"
+        android:text="@string/launch_heading"
         android:textSize="@dimen/heading"
         app:layout_constraintBottom_toTopOf="@id/launch_buttonbar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,9 +39,14 @@
 
         <Button
             android:id="@+id/launch_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/darkGreen"
-            android:text="@string/button_launch" />
+            android:background="@drawable/btn_rounded"
+            android:paddingStart="30dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="30dp"
+            android:paddingBottom="15dp"
+            android:text="@string/launch_button"
+            android:textSize="@dimen/button_lg" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

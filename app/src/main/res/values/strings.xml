@@ -1,11 +1,9 @@
 <resources>
-    <string name="app_name">PolusGGAndroid</string>
+    <string name="app_name">PolusGG Launcher</string>
     <string name="app_name_unity">PolusGGUnity</string>
 
-    <string name="title_activity_main">Polus.gg Launcher</string>
-
-    <string name="button_launch">Launch</string>
-    <string name="heading_launch">Welcome to Polus.gg</string>
+    <string name="launch_button">Launch</string>
+    <string name="launch_heading">Welcome to Polus.gg</string>
 
     <!-- Unity specifics -->
     <string name="game_view_content_description">Game view</string>

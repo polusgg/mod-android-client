@@ -18,7 +18,45 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        main.cpp util/logger.h)
+        main.cpp
+        custom_objects/inner_net/inner_net_obj_types.h
+        custom_objects/inner_net/InnerNetObj.cpp
+        custom_objects/inner_net/InnerNetObj.h
+        custom_objects/inner_net/spawn_entity_types.h
+        custom_objects/inner_net/SpawnEntity.cpp
+        custom_objects/inner_net/SpawnEntity.h
+        patches/patch_manager.cpp
+        patches/patch_manager.h
+        patches/base/version_shower_patch.cpp
+        patches/base/version_shower_patch.h
+        patches/game_data/rpc_handler.cpp
+        patches/game_data/rpc_handler.h
+        patches/game_data/rpc_types.h
+        patches/lobby_behaviour/rpc_handler.cpp
+        patches/lobby_behaviour/rpc_handler.h
+        patches/lobby_behaviour/rpc_types.h
+        patches/player_control/rpc_handler.cpp
+        patches/player_control/rpc_handler.h
+        patches/player_control/rpc_types.h
+        patches/root_packet/root_packet_handler.cpp
+        patches/root_packet/root_packet_handler.h
+        patches/root_packet/root_packet_types.h
+        services/AssetBundleManager.h
+        services/InnerNetObjManager.cpp
+        services/InnerNetObjManager.h
+        util/helpers.cpp
+        util/helpers.h
+        util/logger.h
+        il2cpp-headers/framework/il2cpp-init.cpp
+        il2cpp-headers/framework/il2cpp-helpers.cpp
+        )
+
+
+
+# Include il2cpp-headers
+include_directories(
+        il2cpp-headers
+)
 
 
 

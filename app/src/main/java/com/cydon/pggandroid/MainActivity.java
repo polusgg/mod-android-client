@@ -20,17 +20,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
         setContentView(R.layout.activity_main);
+        
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         findViewById(R.id.launch_button).setOnClickListener((View v) -> {
             isUnityLoaded = true;
             initMod();
-            startActivityForResult(
-                    new Intent(this, UnityPlayerActivity.class)
-                            .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT),
-                    START_UNITY_PLAYER_INTENT);
+
+            Intent startUnityIntent = new Intent(this, UnityPlayerActivity.class)
+											.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivityForResult(startUnityIntent,START_UNITY_PLAYER_INTENT);
         });
     }
 
