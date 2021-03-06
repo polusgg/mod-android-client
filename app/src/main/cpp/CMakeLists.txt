@@ -23,8 +23,6 @@ add_library( # Sets the name of the library.
         custom_objects/inner_net/InnerNetObj.cpp
         custom_objects/inner_net/InnerNetObj.h
         custom_objects/inner_net/spawn_entity_types.h
-        custom_objects/inner_net/SpawnEntity.cpp
-        custom_objects/inner_net/SpawnEntity.h
         patches/patch_manager.cpp
         patches/patch_manager.h
         patches/base/version_shower_patch.cpp
@@ -32,18 +30,28 @@ add_library( # Sets the name of the library.
         patches/game_data/rpc_handler.cpp
         patches/game_data/rpc_handler.h
         patches/game_data/rpc_types.h
+#        patches/game_transition_screen/end_screen.cpp
+#        patches/game_transition_screen/end_screen.h
+#        patches/game_transition_screen/start_screen.cpp
+#        patches/game_transition_screen/start_screen.h
         patches/lobby_behaviour/rpc_handler.cpp
         patches/lobby_behaviour/rpc_handler.h
         patches/lobby_behaviour/rpc_types.h
+        patches/player_control/remove_murder_check.cpp
+        patches/player_control/remove_murder_check.h
         patches/player_control/rpc_handler.cpp
         patches/player_control/rpc_handler.h
         patches/player_control/rpc_types.h
+        patches/root_packet/game_data/spawn_packet_handler.cpp
+        patches/root_packet/game_data/spawn_packet_handler.h
         patches/root_packet/root_packet_handler.cpp
         patches/root_packet/root_packet_handler.h
         patches/root_packet/root_packet_types.h
         services/AssetBundleManager.h
         services/InnerNetObjManager.cpp
         services/InnerNetObjManager.h
+        util/construct_color.cpp
+        util/construct_color.h
         util/helpers.cpp
         util/helpers.h
         util/logger.h

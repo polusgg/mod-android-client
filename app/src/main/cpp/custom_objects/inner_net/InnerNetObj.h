@@ -20,7 +20,7 @@ namespace custom_objects { namespace inner_net
         virtual void Awake() = 0;
         virtual void FixedUpdate() = 0;
 
-        // Pointers to itself exist in parent SpawnEntity and InnerNetObjManager
+        // Pointer to itself exists in InnerNetObjManager
         virtual ~InnerNetObj() = 0;
 
         uint get_net_id();

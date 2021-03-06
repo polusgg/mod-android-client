@@ -30,7 +30,9 @@ namespace patches { namespace game_data { namespace rpc_handler
             case patches::game_data::rpc_types::ChatVisibility: {
                 auto is_chat_visible = app::MessageReader_ReadBoolean(ODDHFPNFBFN, nullptr);
 
-                auto hud_manager = app::DestroyableSingleton_1_HudManager__get_Instance(nullptr);
+                auto hud_manager = app::DestroyableSingleton_1_HudManager__get_Instance(
+                    *app::DestroyableSingleton_1_HudManager__get_InstanceExists__MethodInfo
+                );
                 app::ChatController_SetVisible(hud_manager->Chat, is_chat_visible, nullptr);
 
                 break;

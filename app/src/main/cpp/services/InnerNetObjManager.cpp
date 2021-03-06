@@ -8,24 +8,20 @@ void InnerNetObjManager::init() {
 }
 
 void InnerNetObjManager::destroy() {
-    for (auto entity : this->spawn_entities) {
-        // SpawnEntity destructor will destroy contained inner net objects as well
-        delete entity;
+    for (auto& pair : this->inner_net_objs) {
+        delete pair.second;
     }
-}
-
-void InnerNetObjManager::add_spawn_entity(SpawnEntity& spawnEntity) {
-    this->spawn_entities.push_back(&spawnEntity);
+    this->inner_net_objs.clear();
 }
 
 void InnerNetObjManager::add_inner_net_obj(uint net_id, InnerNetObj& innerNetObj) {
     this->inner_net_objs.insert({ net_id, &innerNetObj });
 }
 
-void InnerNetObjManager::remove_spawn_entity(uint net_id) {
-    for (auto entity : this->spawn_entities) {
-        if (entity->get_primary_net_id() == net_id) {
-            delete entity;
+void InnerNetObjManager::remove_inner_net_obj(uint net_id) {
+    for (auto& pair : this->inner_net_objs) {
+        if (pair.second->get_net_id() == net_id) {
+            delete pair.second;
         }
     }
 }
