@@ -12,14 +12,14 @@ uintptr_t get_library_address(const char* library_name) {
     FILE *fp = fopen("/proc/self/maps", "re");
 
     if (!fp) {
-        LOGW("Could not open /proc/self/maps to scan for loaded libraries");
+        LOGW("[-] Could not open /proc/self/maps to scan for loaded libraries");
         return 0;
     }
 
     while(fgets(buffer, sizeof(buffer), fp)) {
         if(strstr(buffer, library_name)) {
             base_address = std::stoul(buffer, nullptr, 16);
-            LOGI("Found %s library loaded at address: 0x%016" PRIxPTR "\n", library_name, base_address);
+            LOGI("[+] Found %s library loaded at address: 0x%016" PRIxPTR "\n", library_name, base_address);
             break;
         }
     }

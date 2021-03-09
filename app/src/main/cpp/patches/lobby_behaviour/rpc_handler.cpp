@@ -14,14 +14,6 @@ namespace patches { namespace lobby_behaviour { namespace rpc_handler
             app::MessageReader * ODDHFPNFBFN,
             MethodInfo * method);
 
-    void patch() {
-        DobbyHook(
-                (void *) app::LobbyBehaviour_HandleRpc,
-                (void *) detoured_function,
-                (void **) &orig_function
-        );
-    }
-
     void detoured_function(
             app::LobbyBehaviour * _this,
             uint8_t MMLACCAPBPM,
@@ -55,6 +47,14 @@ namespace patches { namespace lobby_behaviour { namespace rpc_handler
                 break;
             }
         }
+    }
+
+    void patch() {
+        DobbyHook(
+                (void *) app::LobbyBehaviour_HandleRpc,
+                (void *) detoured_function,
+                (void **) &orig_function
+        );
     }
 
 } } }

@@ -25,9 +25,10 @@ namespace services
 
         void init();
         void destroy();
-        void add_inner_net_obj(uint net_id, custom_objects::inner_net::InnerNetObj& innerNetObj);
 
+        void add_inner_net_obj(uint net_id, custom_objects::inner_net::InnerNetObj& innerNetObj);
         void remove_inner_net_obj(uint net_id);
+        void clear_all_inner_net_obj();
     };
 }
 

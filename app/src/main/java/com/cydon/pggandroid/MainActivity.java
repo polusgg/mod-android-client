@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.launch_button).setOnClickListener((View v) -> {
             isUnityLoaded = true;
 
+            initMod();
+
             Intent startUnityIntent = new Intent(this, UnityPlayerActivity.class)
 											.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivityForResult(startUnityIntent,START_UNITY_PLAYER_INTENT);
@@ -41,4 +43,6 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == START_UNITY_PLAYER_INTENT)
             isUnityLoaded = false;
     }
+
+    public native void initMod();
 }

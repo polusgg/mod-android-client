@@ -13,14 +13,6 @@ namespace patches { namespace player_control { namespace rpc_handler
         app::MessageReader * ODDHFPNFBFN,
         MethodInfo * method);
 
-    void patch() {
-        DobbyHook(
-                (void *) app::PlayerControl_HandleRpc,
-                (void *) detoured_function,
-                (void **) &orig_function
-        );
-    }
-
     void detoured_function(
             app::PlayerControl * _this,
             uint8_t MMLACCAPBPM,
@@ -72,6 +64,14 @@ namespace patches { namespace player_control { namespace rpc_handler
                 break;
             }
         }
+    }
+
+    void patch() {
+        DobbyHook(
+                (void *) app::PlayerControl_HandleRpc,
+                (void *) detoured_function,
+                (void **) &orig_function
+        );
     }
 
 } } }

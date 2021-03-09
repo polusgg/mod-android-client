@@ -19,6 +19,7 @@ namespace patches { namespace game_start_screen
 
         auto player_controls = (app::List_1_PlayerControl_ *) il2cpp_object_new(
                 (Il2CppClass *) *app::List_1_PlayerControl___TypeInfo);
+        app::List_1_PlayerControl___ctor(player_controls, *app::List_1_PlayerControl___ctor__MethodInfo);
 
         for (int i = 0; i < your_team->bounds->length; i++) {
             auto player_id = your_team->vector[i];
@@ -79,12 +80,12 @@ namespace patches { namespace game_start_screen
 
     void patch() {
         DobbyHook(
-                (void *) app::IntroCutscene_BeginCrewmate,
+                (void *) app::IntroCutscene_MPPDNDNKJOL,
                 (void *) begin_crewmate,
                 (void **) &orig_begin_crewmate
         );
         DobbyHook(
-                (void *) app::IntroCutscene_BeginImpostor,
+                (void *) app::IntroCutscene_HJCAJHNEEIP,
                 (void *) begin_impostor,
                 (void **) &orig_begin_impostor
         );

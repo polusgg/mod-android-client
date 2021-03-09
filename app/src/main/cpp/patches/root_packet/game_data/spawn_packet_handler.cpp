@@ -21,8 +21,9 @@ namespace patches { namespace root_packet { namespace game_data
             int BDIDGKJNIPJ,
             MethodInfo * method)
     {
-        auto messageReader = app::MessageReader_Get(ODDHFPNFBFN, nullptr);
         if (ODDHFPNFBFN->Tag == 4) {
+            auto messageReader = app::MessageReader_Get(ODDHFPNFBFN, nullptr);
+
             auto spawn_type = app::MessageReader_ReadPackedUInt32(messageReader, nullptr);
             if (spawn_type < 0x80) {
                 orig_function(_this, ODDHFPNFBFN, BDIDGKJNIPJ, method);
@@ -43,11 +44,13 @@ namespace patches { namespace root_packet { namespace game_data
                     break;
                 }
                 default: {
-                    LOGI("Unknown spawn type %d", spawn_type);
+                    LOGW("[-] Unknown spawn type %d", spawn_type);
                 }
             }
 
         } else if (ODDHFPNFBFN->Tag == 5) {
+            auto messageReader = app::MessageReader_Get(ODDHFPNFBFN, nullptr);
+
             auto despawn_net_id = app::MessageReader_ReadPackedUInt32(messageReader, nullptr);
             services::InnerNetObjManager::getInstance().remove_inner_net_obj(despawn_net_id);
 

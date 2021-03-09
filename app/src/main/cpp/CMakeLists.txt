@@ -30,13 +30,17 @@ add_library( # Sets the name of the library.
         patches/game_data/rpc_handler.cpp
         patches/game_data/rpc_handler.h
         patches/game_data/rpc_types.h
-#        patches/game_transition_screen/end_screen.cpp
-#        patches/game_transition_screen/end_screen.h
-#        patches/game_transition_screen/start_screen.cpp
-#        patches/game_transition_screen/start_screen.h
+        patches/game_transition_screen/end_screen.cpp
+        patches/game_transition_screen/end_screen.h
+        patches/game_transition_screen/start_screen.cpp
+        patches/game_transition_screen/start_screen.h
+        patches/lifecycle/shipstatus_begin.cpp
+        patches/lifecycle/shipstatus_begin.h
         patches/lobby_behaviour/rpc_handler.cpp
         patches/lobby_behaviour/rpc_handler.h
         patches/lobby_behaviour/rpc_types.h
+        patches/player_control/chat_command_patch.cpp
+        patches/player_control/chat_command_patch.h
         patches/player_control/remove_murder_check.cpp
         patches/player_control/remove_murder_check.h
         patches/player_control/rpc_handler.cpp
@@ -47,13 +51,19 @@ add_library( # Sets the name of the library.
         patches/root_packet/root_packet_handler.cpp
         patches/root_packet/root_packet_handler.h
         patches/root_packet/root_packet_types.h
+        services/icalls/unstrip.cpp
+        services/icalls/unstrip.h
         services/AssetBundleManager.h
+        services/ICallHelper.cpp
+        services/ICallHelper.h
         services/InnerNetObjManager.cpp
         services/InnerNetObjManager.h
         util/construct_color.cpp
         util/construct_color.h
         util/helpers.cpp
         util/helpers.h
+        util/jni_helpers.cpp
+        util/jni_helpers.h
         util/logger.h
         il2cpp-headers/framework/il2cpp-init.cpp
         il2cpp-headers/framework/il2cpp-helpers.cpp

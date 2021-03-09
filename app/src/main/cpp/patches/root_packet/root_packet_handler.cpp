@@ -17,14 +17,6 @@ namespace patches { namespace root_packet { namespace root_packet_handler
             app::SendOption__Enum KJJKMAEPHIK,
             MethodInfo * method);
 
-    void patch() {
-        DobbyHook(
-                (void *) app::InnerNetClient_LFJJNNAMHEP,
-                (void *) detoured_function,
-                (void **) &orig_function
-        );
-    }
-
     void detoured_function(
             app::InnerNetClient *_this,
             app::MessageReader * ODDHFPNFBFN,
@@ -74,6 +66,14 @@ namespace patches { namespace root_packet { namespace root_packet_handler
                 break;
             }
         }
+    }
+
+    void patch() {
+        DobbyHook(
+                (void *) app::InnerNetClient_LFJJNNAMHEP,
+                (void *) detoured_function,
+                (void **) &orig_function
+        );
     }
 
 } } }

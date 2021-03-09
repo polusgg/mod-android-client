@@ -4,14 +4,13 @@
 using namespace services;
 
 void InnerNetObjManager::init() {
-    LOGI("Initializing InnerNetObjectManager");
+    LOGI("[+] Initializing InnerNetObjectManager");
 }
 
 void InnerNetObjManager::destroy() {
-    for (auto& pair : this->inner_net_objs) {
-        delete pair.second;
-    }
-    this->inner_net_objs.clear();
+    LOGI("[-] Destroying InnerNetObjManager");
+
+    this->clear_all_inner_net_obj();
 }
 
 void InnerNetObjManager::add_inner_net_obj(uint net_id, InnerNetObj& innerNetObj) {
@@ -24,4 +23,12 @@ void InnerNetObjManager::remove_inner_net_obj(uint net_id) {
             delete pair.second;
         }
     }
+    this->inner_net_objs.erase(net_id);
+}
+
+void InnerNetObjManager::clear_all_inner_net_obj() {
+    for (auto& pair : this->inner_net_objs) {
+        delete pair.second;
+    }
+    this->inner_net_objs.clear();
 }
