@@ -3,9 +3,9 @@
 namespace patches { namespace player_control
 {
     enum rpc_types {
-        SetRole = 0x88,
-        CloseHud = 0x89,
-        Revive = 0x8a,
-        PlaySound = 0x8c
+        SetRole = 0x82,
+        CloseHud = 0x83,
+        Revive = 0x84,
+        PlaySound = 0x85
     };
 } }

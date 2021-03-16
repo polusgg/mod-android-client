@@ -48,7 +48,7 @@ namespace patches { namespace player_control { namespace rpc_handler
                 auto asset_id = app::MessageReader_ReadPackedUInt32(ODDHFPNFBFN, nullptr);
                 auto audio_clip = services::AssetBundleManager::getInstance().get_asset_from_id(asset_id);
 
-                // Volume rom 0-100
+                // Volume from 0-100
                 auto volume_byte = app::MessageReader_ReadByte(ODDHFPNFBFN, nullptr);
 
                 // Scale it to float value between 0 and 1

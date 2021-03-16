@@ -72,7 +72,8 @@ namespace patches { namespace game_start_screen
 
         orig_begin_impostor(_this, *player_controls, method);
 
-        app::GameObject_SetActive((app::GameObject *) (_this->ImpostorText), true, nullptr);
+        auto impostor_text_game_obj = app::Component_get_gameObject((app::Component *) _this->ImpostorText, nullptr);
+        app::GameObject_SetActive(impostor_text_game_obj, true, nullptr);
         _this->Title->Text = title_text;
         _this->Title->Color = background_color->fields;
         _this->ImpostorText->Text = subtitle_text;

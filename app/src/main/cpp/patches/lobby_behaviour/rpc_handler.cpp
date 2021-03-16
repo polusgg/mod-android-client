@@ -21,24 +21,14 @@ namespace patches { namespace lobby_behaviour { namespace rpc_handler
             MethodInfo * method)
     {
         switch (auto call_id = (patches::lobby_behaviour::rpc_types) MMLACCAPBPM) {
-            case patches::lobby_behaviour::rpc_types::SetCode: {
-                auto game_code = app::MessageReader_ReadString(ODDHFPNFBFN, nullptr);
-                auto translation_controller = app::DestroyableSingleton_1_TranslationController__get_Instance(
-                    *app::DestroyableSingleton_1_TranslationController__get_Instance__MethodInfo
-                );
-                auto translated_string = app::TranslationController_GetString_2(
-                        translation_controller,
-                        app::StringNames__Enum::RoomCode,
-                        app::Array_Empty(*app::Array_Empty__MethodInfo),
-                        nullptr);
-
-                auto new_game_code = il2cppi_to_string(translated_string) + "\r\n" + il2cppi_to_string(game_code);
-                LOGI("Visually changing the game code to: %s", new_game_code.c_str());
+            case patches::lobby_behaviour::rpc_types::SetString: {
+                auto string_boxed = app::MessageReader_ReadString(ODDHFPNFBFN, nullptr);
+                auto location = app::MessageReader_ReadByte(ODDHFPNFBFN, nullptr);
 
                 auto game_start_manager = app::DestroyableSingleton_1_GameStartManager__get_Instance(
                     *app::DestroyableSingleton_1_GameStartManager__get_InstanceExists__MethodInfo
                 );
-                game_start_manager->GameRoomName->Text = (app::String *) (il2cpp_string_new(new_game_code.c_str()));
+                game_start_manager->GameRoomName->Text = string_boxed;
 
                 break;
             }
