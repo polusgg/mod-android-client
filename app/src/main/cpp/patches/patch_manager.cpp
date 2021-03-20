@@ -5,6 +5,8 @@
 #include "game_data/rpc_handler.h"
 #include "game_transition_screen/end_screen.h"
 #include "game_transition_screen/start_screen.h"
+#include "inner_net_client/ino_data_serialize_patch.h"
+#include "lifecycle/endgamehook.h"
 #include "lifecycle/shipstatus_begin.h"
 #include "lobby_behaviour/rpc_handler.h"
 #include "player_control/chat_command_patch.h"
@@ -22,7 +24,9 @@ void patch_all() {
     game_data::rpc_handler::patch();
     game_end_screen::patch();
     game_start_screen::patch();
+    inner_net_client::ino_data_serialize::patch();
     lifecycle::shipstatus_begin::patch();
+    lifecycle::endgamehook::patch();
     lobby_behaviour::rpc_handler::patch();
     player_control::chat_command::patch();
     player_control::remove_murder_check::patch();

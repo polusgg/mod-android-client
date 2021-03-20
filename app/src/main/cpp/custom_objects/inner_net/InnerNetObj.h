@@ -1,6 +1,7 @@
 #pragma once
 
 #include <sys/types.h>
+#include "framework/il2cpp-appdata.h"
 
 namespace custom_objects { namespace inner_net
 {
@@ -14,7 +15,7 @@ namespace custom_objects { namespace inner_net
         InnerNetObj(uint owner_id, uint net_id);
 
         virtual void Serialize() = 0;
-        virtual void Deserialize() = 0;
+        virtual void Deserialize(app::MessageReader * messageReader) = 0;
         virtual void HandleRpc() = 0;
 
         virtual void Awake() = 0;

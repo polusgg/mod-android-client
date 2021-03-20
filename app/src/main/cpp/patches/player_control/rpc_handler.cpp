@@ -46,17 +46,20 @@ namespace patches { namespace player_control { namespace rpc_handler
             }
             case patches::player_control::rpc_types::PlaySound: {
                 auto asset_id = app::MessageReader_ReadPackedUInt32(ODDHFPNFBFN, nullptr);
-                auto audio_clip = services::AssetBundleManager::getInstance().get_asset_from_id(asset_id);
-
+                auto is_sfx = app::MessageReader_ReadBoolean(ODDHFPNFBFN, nullptr);
+                auto loop_sound = app::MessageReader_ReadBoolean(ODDHFPNFBFN, nullptr);
                 // Volume from 0-100
                 auto volume_byte = app::MessageReader_ReadByte(ODDHFPNFBFN, nullptr);
+                auto pitch = app::MessageReader_ReadSingle(ODDHFPNFBFN, nullptr);
 
                 // Scale it to float value between 0 and 1
                 auto volume = (float) volume_byte / 100;
+                auto audio_clip = services::AssetBundleManager::getInstance().get_asset_from_id(asset_id);
 
                 auto sound_manager = app::SoundManager_get_Instance(nullptr);
-                app::SoundManager_PlaySound(sound_manager, (app::AudioClip *) audio_clip, false, volume, nullptr);
+                auto audio_source = app::SoundManager_PlaySoundImmediate(sound_manager, (app::AudioClip *) audio_clip, loop_sound, volume, pitch, nullptr);
 
+                app::AudioSource_set_outputAudioMixerGroup(audio_source, is_sfx ? sound_manager->sfxMixer : sound_manager->musicMixer, nullptr);
                 break;
             }
             default: {

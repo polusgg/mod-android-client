@@ -5,6 +5,7 @@
 #include "root_packet_handler.h"
 #include "root_packet_types.h"
 #include "../../services/AssetBundleManager.h"
+#include "../../services/InnerNetObjManager.h"
 #include "../../util/construct_color.h"
 #include "../game_transition_screen/start_screen.h"
 #include "../game_transition_screen/end_screen.h"
@@ -60,6 +61,10 @@ namespace patches { namespace root_packet { namespace root_packet_handler
 
                 break;
 
+            }
+            case patches::root_packet::root_packet_types::EndGame: {
+                services::InnerNetObjManager::getInstance().destroy();
+                orig_function(_this, ODDHFPNFBFN, KJJKMAEPHIK, method);
             }
             default: {
                 orig_function(_this, ODDHFPNFBFN, KJJKMAEPHIK, method);

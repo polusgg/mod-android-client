@@ -21,7 +21,20 @@ namespace patches { namespace root_packet { namespace game_data
             int BDIDGKJNIPJ,
             MethodInfo * method)
     {
-        if (ODDHFPNFBFN->Tag == 4) {
+        if (ODDHFPNFBFN->Tag == 1) {
+            auto messageReader = app::MessageReader_Get(ODDHFPNFBFN, nullptr);
+            auto net_id = app::MessageReader_ReadPackedUInt32(messageReader, nullptr);
+
+            auto inner_net_obj = services::InnerNetObjManager::getInstance().get_inner_net_obj(net_id);
+
+            if (inner_net_obj == nullptr) {
+                orig_function(_this, ODDHFPNFBFN, BDIDGKJNIPJ, method);
+                return;
+            }
+
+            inner_net_obj->Deserialize(messageReader);
+
+        } else if (ODDHFPNFBFN->Tag == 4) {
             auto messageReader = app::MessageReader_Get(ODDHFPNFBFN, nullptr);
 
             auto spawn_type = app::MessageReader_ReadPackedUInt32(messageReader, nullptr);

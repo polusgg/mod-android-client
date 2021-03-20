@@ -34,6 +34,10 @@ add_library( # Sets the name of the library.
         patches/game_transition_screen/end_screen.h
         patches/game_transition_screen/start_screen.cpp
         patches/game_transition_screen/start_screen.h
+        patches/inner_net_client/ino_data_serialize_patch.cpp
+        patches/inner_net_client/ino_data_serialize_patch.h
+        patches/lifecycle/endgamehook.cpp
+        patches/lifecycle/endgamehook.h
         patches/lifecycle/shipstatus_begin.cpp
         patches/lifecycle/shipstatus_begin.h
         patches/lobby_behaviour/rpc_handler.cpp
