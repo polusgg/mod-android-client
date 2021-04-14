@@ -4,7 +4,7 @@
 # Sets the minimum version of CMake required to build the native library.
 project(PGGAndroidNativeMod)
 
-cmake_minimum_required(VERSION 3.4.1)
+cmake_minimum_required(VERSION 3.16)
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -40,9 +40,6 @@ add_library( # Sets the name of the library.
         patches/lifecycle/endgamehook.h
         patches/lifecycle/shipstatus_begin.cpp
         patches/lifecycle/shipstatus_begin.h
-        patches/lobby_behaviour/rpc_handler.cpp
-        patches/lobby_behaviour/rpc_handler.h
-        patches/lobby_behaviour/rpc_types.h
         patches/player_control/chat_command_patch.cpp
         patches/player_control/chat_command_patch.h
         patches/player_control/remove_murder_check.cpp
@@ -55,6 +52,10 @@ add_library( # Sets the name of the library.
         patches/root_packet/root_packet_handler.cpp
         patches/root_packet/root_packet_handler.h
         patches/root_packet/root_packet_types.h
+        patches/set_string/set_string.h
+        patches/set_string/set_string.cpp
+        patches/shipstatus/rpc_handler.cpp
+        patches/shipstatus/rpc_handler.h
         services/icalls/unstrip.cpp
         services/icalls/unstrip.h
         services/AssetBundleManager.h
@@ -62,13 +63,17 @@ add_library( # Sets the name of the library.
         services/ICallHelper.h
         services/InnerNetObjManager.cpp
         services/InnerNetObjManager.h
-        util/construct_color.cpp
-        util/construct_color.h
+        util/construct_type.cpp
+        util/construct_type.h
         util/helpers.cpp
         util/helpers.h
         util/jni_helpers.cpp
         util/jni_helpers.h
         util/logger.h
+        util/message_extensions.cpp
+        util/message_extensions.h
+        util/renderer_extensions.cpp
+        util/renderer_extensions.h
         il2cpp-headers/framework/il2cpp-init.cpp
         il2cpp-headers/framework/il2cpp-helpers.cpp
         )
@@ -80,6 +85,10 @@ include_directories(
         il2cpp-headers
 )
 
+target_precompile_headers(
+        pggandroidnative
+        PUBLIC il2cpp-headers/framework/il2cpp-appdata.h
+)
 
 
 # Include Dobby Library

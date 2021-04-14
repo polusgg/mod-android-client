@@ -6,6 +6,8 @@ namespace patches { namespace player_control
         SetRole = 0x82,
         CloseHud = 0x83,
         Revive = 0x84,
-        PlaySound = 0x85
+        SetOutline = 0x8a,
+        SetOpacity = 0x8b,
+        BeginAnimation = 0x8c,
     };
 } }

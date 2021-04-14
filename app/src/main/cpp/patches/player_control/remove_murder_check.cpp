@@ -20,6 +20,7 @@ namespace patches { namespace player_control { namespace remove_murder_check
         bool orig_impostor = player_info->DODNEPODPBP;
         bool orig_dead = player_info->JJCBCHPJBAN;
 
+        //TODO: Data.IsImpostor, Data.IsDead
         player_info->DODNEPODPBP = true;
         player_info->JJCBCHPJBAN = false;
 

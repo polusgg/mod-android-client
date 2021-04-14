@@ -21,7 +21,8 @@ namespace patches { namespace game_start_screen
                 (Il2CppClass *) *app::List_1_PlayerControl___TypeInfo);
         app::List_1_PlayerControl___ctor(player_controls, *app::List_1_PlayerControl___ctor__MethodInfo);
 
-        for (int i = 0; i < your_team->bounds->length; i++) {
+
+        for (il2cpp_array_size_t i = 0; i < your_team->max_length; i++) {
             auto player_id = your_team->vector[i];
             auto player_data = app::GameData_GetPlayerById(game_data, player_id, nullptr);
             app::List_1_PlayerControl__Add(

@@ -4,8 +4,8 @@
 #include "util/helpers.h"
 #include "util/jni_helpers.h"
 #include "framework/il2cpp-init.h"
-#include "services/InnerNetObjManager.h"
 #include "patches/patch_manager.h"
+#include "services/InnerNetObjManager.h"
 #include "services/ICallHelper.h"
 
 uintptr_t il2cpp_base_address;
@@ -15,7 +15,7 @@ void *mod_thread(void *) {
     LOGI("[+] Starting execution of mod thread");
 
     // Side effect to attach JavaVM to this pthread
-    get_thread_jnienv();
+    // get_thread_jnienv();
     il2cpp_base_address = 0;
 
     // Make sure libil2cpp.so is loaded
@@ -29,11 +29,11 @@ void *mod_thread(void *) {
 
     // Initialize Services
     services::InnerNetObjManager::getInstance().init();
-    services::ICallHelper::getInstance().init();
+//    services::ICallHelper::getInstance().init();
     LOGI("[+] Initialized services");
 
-    // Patch all functions
-    patch_all();
+    // Patch all functionsdis
+//    patch_all();
     LOGI("[+] Patched and detoured functions");
 
     return nullptr;
@@ -45,7 +45,7 @@ Java_com_cydon_pggandroid_MainActivity_initMod(
         JNIEnv *env,
         jobject thiz
 ) {
-    env->GetJavaVM(&g_jvm);
+//    env->GetJavaVM(&g_jvm);
 
     pthread_t pthread;
     pthread_create(&pthread, nullptr, mod_thread, nullptr);

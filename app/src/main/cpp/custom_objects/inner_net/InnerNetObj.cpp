@@ -2,8 +2,7 @@
 
 using namespace custom_objects::inner_net;
 
-InnerNetObj::InnerNetObj(uint owner_id, uint net_id) {
-    this->owner_id = owner_id;
+InnerNetObj::InnerNetObj(uint net_id) {
     this->net_id = net_id;
     this->dirty_bits = 0;
 }

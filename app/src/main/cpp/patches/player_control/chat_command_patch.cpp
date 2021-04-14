@@ -22,7 +22,7 @@ namespace patches { namespace player_control { namespace chat_command
 
         if (chat_msg.find("/button")) {
             auto hud_manager = app::DestroyableSingleton_1_HudManager__get_Instance(
-                    *app::DestroyableSingleton_1_HudManager__get_InstanceExists__MethodInfo
+                    *app::DestroyableSingleton_1_HudManager__get_Instance__MethodInfo
             );
             auto hud_manager_transform = app::Component_get_transform((app::Component *) hud_manager, nullptr);
 

@@ -1,5 +1,14 @@
-#include "construct_color.h"
+#include "message_extensions.h"
 #include "framework/il2cpp-appdata.h"
+
+app::Vector2__Boxed* MessageReader_ReadVector2(app::MessageReader* reader) {
+    float xfloat = app::MessageReader_ReadUInt16(reader, nullptr) / 65536;
+    float yfloat = app::MessageReader_ReadUInt16(reader, nullptr) / 65536;
+
+    auto vector2 = (app::Vector2__Boxed*) il2cpp_object_new((Il2CppClass *) *app::Vector2__TypeInfo);
+    app::Vector2__ctor(vector2, xfloat, yfloat, nullptr);
+    return vector2;
+}
 
 app::Color__Boxed* construct_color(float red, float green, float blue, float alpha) {
     auto color = (app::Color__Boxed*) il2cpp_object_new((Il2CppClass *) *app::Color__TypeInfo);

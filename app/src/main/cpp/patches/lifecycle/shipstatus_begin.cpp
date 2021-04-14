@@ -15,7 +15,7 @@ namespace patches { namespace lifecycle { namespace shipstatus_begin
     {
         orig_function(_this, method);
         auto hud_manager = app::DestroyableSingleton_1_HudManager__get_Instance(
-                *app::DestroyableSingleton_1_HudManager__get_InstanceExists__MethodInfo
+                *app::DestroyableSingleton_1_HudManager__get_Instance__MethodInfo
         );
 
         app::ChatController_SetVisible(hud_manager->Chat, true, nullptr);

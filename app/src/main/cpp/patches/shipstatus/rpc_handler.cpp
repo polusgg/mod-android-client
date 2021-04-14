@@ -3,11 +3,12 @@
 #include <dobby.h>
 #include "rpc_handler.h"
 #include "rpc_types.h"
+#include "../../util/construct_type.h"
 
 namespace patches { namespace game_data { namespace rpc_handler
 {
     void (*orig_function)(
-            app::GameData * _this,
+            app::ShipStatus * _this,
             uint8_t MMLACCAPBPM,
             app::MessageReader * ODDHFPNFBFN,
             MethodInfo * method);
@@ -18,14 +19,14 @@ namespace patches { namespace game_data { namespace rpc_handler
             app::MessageReader * ODDHFPNFBFN,
             MethodInfo * method)
     {
-        switch (auto call_id = (patches::game_data::rpc_types) MMLACCAPBPM) {
-            case patches::game_data::rpc_types::ChatVisibility: {
-                auto is_chat_visible = app::MessageReader_ReadBoolean(ODDHFPNFBFN, nullptr);
+        switch (auto call_id = (patches::shipstatus::rpc_types) MMLACCAPBPM) {
+            case patches::shipstatus::rpc_types::DespawnVents {
+                auto vents = app::Object_1_FindObjectsOfType(get_type((Il2CppClass *) *Vent__TypeInfo));
 
-                auto hud_manager = app::DestroyableSingleton_1_HudManager__get_Instance(
-                    *app::DestroyableSingleton_1_HudManager__get_Instance__MethodInfo
-                );
-                app::ChatController_SetVisible(hud_manager->Chat, is_chat_visible, nullptr);
+                for (uintptr_t i = 0; vents->max_length; i++) {
+                    auto vent = vents->vector[i];
+                    app::Object_1_Destroy_1(vent, nullptr);
+                }
 
                 break;
             }
@@ -38,7 +39,7 @@ namespace patches { namespace game_data { namespace rpc_handler
 
     void patch() {
         DobbyHook(
-                (void *) app::GameData_HandleRpc,
+                (void *) app::ShipStatus_HandleRpc,
                 (void *) detoured_function,
                 (void **) &orig_function
         );

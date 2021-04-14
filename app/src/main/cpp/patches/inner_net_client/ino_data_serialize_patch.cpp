@@ -3,7 +3,7 @@
 #include "../../services/InnerNetObjManager.h"
 #include "ino_data_serialize_patch.h"
 
-namespace patches { namespace lifecycle { namespace endgamehook
+namespace patches { namespace inner_net_client { namespace ino_data_serialize
 {
     void (*orig_function)(
             app::InnerNetClient * _this,
